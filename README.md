@@ -3,6 +3,10 @@
 This module helps to build dependencies for serverless environments that cannot
 build at install time.
 
+This is achieved by passing in an object of dependencies (formatted the same as package.json)
+which is then installed using `npm install`. The resulting `node_modules` directory is
+compressed and uploaded to s3.
+
 ## Usage
 
 ```javascript
