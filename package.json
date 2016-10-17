@@ -1,6 +1,6 @@
 {
   "name": "serverless-builder",
-  "description": "",
+  "description": "Build dependencies in a serverless environment",
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
