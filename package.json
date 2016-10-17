@@ -1,6 +1,5 @@
 {
   "name": "serverless-builder",
-  "version": "1.0.0",
   "description": "Build dependencies in a serverless environment",
   "main": "index.js",
   "scripts": {
