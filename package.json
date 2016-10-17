@@ -1,0 +1,32 @@
+{
+  "name": "serverless-builder",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint .",
+    "test": "istanbul cover --print both nodeunit test/index.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.6.9",
+    "npm": "^3.10.8",
+    "s3-streams": "^0.3.0",
+    "tar-fs": "^1.14.0",
+    "temp": "^0.8.3"
+  },
+  "engines": {
+    "node": ">=4.3"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "nodeunit": "^0.10.2",
+    "semantic-release": "^4.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elliotttf/serverless-builder.git"
+  }
+}
