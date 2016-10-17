@@ -25,7 +25,7 @@ module.exports = {
     test.expect(1);
     sb(
       { once: '^1.0.0' },
-      { Bucket: 'serverless-builder-repo' }
+      { Bucket: process.env.SB_S3_BUCKET_NAME }
     )
       .then((res) => {
         this.uploaded = res;
