@@ -1,5 +1,8 @@
 # Serverless Builder
 
+[![Build Status](https://travis-ci.org/elliotttf/serverless-builder.svg?branch=master)](https://travis-ci.org/elliotttf/serverless-builder)
+[![Coverage Status](https://coveralls.io/repos/github/elliotttf/serverless-builder/badge.svg?branch=master)](https://coveralls.io/github/elliotttf/serverless-builder?branch=master)
+
 This module helps to build dependencies for serverless environments that cannot
 build at install time.
 
