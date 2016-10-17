@@ -27,10 +27,10 @@ module.exports = {
       { once: '^1.0.0' },
       { Bucket: 'serverless-builder-repo' }
     )
-      .then(res => {
+      .then((res) => {
         this.uploaded = res;
-        s3.getObject(res, (err, data) => {
-          if (err) {
+        s3.getObject(res, (getErr, data) => {
+          if (getErr) {
             return test.done();
           }
 
@@ -38,21 +38,16 @@ module.exports = {
           bStream.pipe(zlib.Gunzip())
             .pipe(tar.extract(this.path))
             .on('finish', () => {
-              fs.readdir(this.path, (err, files) => {
+              fs.readdir(this.path, (fsErr, files) => {
                 test.notEqual(files.indexOf('once'), -1);
                 test.done();
               });
             })
-            .on('error', err => {
-              console.log(err);
-              test.done();
-            });
-          bStream.end(data.Body);
+            .on('error', () => test.done());
+          return bStream.end(data.Body);
         });
       })
-      .catch(err => {
-        test.done();
-      });
-  }
+      .catch(() => test.done());
+  },
 };
 

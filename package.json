@@ -21,6 +21,11 @@
     "node": ">=4.3"
   },
   "devDependencies": {
+    "coveralls": "^2.11.14",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "ghooks": "^1.3.2",
     "istanbul": "^0.4.5",
     "nodeunit": "^0.10.2",
     "semantic-release": "^4.3.5"
@@ -28,5 +33,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/elliotttf/serverless-builder.git"
+  },
+  "config": {
+    "pre-commit": "npm run lint"
   }
 }
