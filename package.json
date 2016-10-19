@@ -9,6 +9,12 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
+  "keywords": [
+    "serverless",
+    "dependencies",
+    "compile",
+    "build"
+  ],
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.6.9",
