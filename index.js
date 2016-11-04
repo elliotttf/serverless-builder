@@ -4,8 +4,8 @@ const npm = require('npm');
 const tar = require('tar-fs');
 const temp = require('temp');
 const zlib = require('zlib');
-const { S3 } = require('aws-sdk');
-const { WriteStream } = require('s3-streams');
+const S3 = require('aws-sdk').S3;
+const WriteStream = require('s3-streams').WriteStream;
 
 temp.track();
 
@@ -24,7 +24,8 @@ temp.track();
  * @return {Promise}
  *   Resolves when the install finishes, else rejects.
  */
-module.exports = (packages, s3ObjectOptions, s3Options = {}) => new Promise((resolve, reject) => {
+module.exports = (packages, s3ObjectOptions, s3Options) => new Promise((resolve, reject) => {
+  s3Options = s3Options || {};
   temp.mkdir('builder', (err, path) => {
     if (err) {
       return reject(err);
