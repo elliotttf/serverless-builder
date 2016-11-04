@@ -25,7 +25,7 @@ temp.track();
  *   Resolves when the install finishes, else rejects.
  */
 module.exports = (packages, s3ObjectOptions, s3Options) => new Promise((resolve, reject) => {
-  s3Options = s3Options || {};
+  const myS3Options = s3Options || {};
   temp.mkdir('builder', (err, path) => {
     if (err) {
       return reject(err);
@@ -53,7 +53,7 @@ module.exports = (packages, s3ObjectOptions, s3Options) => new Promise((resolve,
             const Key = `${path.split('/').pop()}.tgz`;
             tar.pack(`${path}/node_modules`)
               .pipe(zlib.Gzip())
-              .pipe(WriteStream(new S3(s3Options), Object.assign({ Key }, s3ObjectOptions)))
+              .pipe(WriteStream(new S3(myS3Options), Object.assign({ Key }, s3ObjectOptions)))
               .on('finish', () => {
                 resolve({
                   Bucket: s3ObjectOptions.Bucket,
