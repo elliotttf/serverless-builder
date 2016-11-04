@@ -45,6 +45,8 @@
     "url": "https://github.com/elliotttf/serverless-builder.git"
   },
   "config": {
-    "pre-commit": "npm run lint"
+    "ghooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

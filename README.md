@@ -15,9 +15,24 @@ compressed and uploaded to s3.
 ```javascript
 const sb = require('serverless-builder');
 const dependencies = require('./package.json').dependencies;
-sb(dependencies, { Bucket: 'my-s3-bucket' })
+sb(dependencies, { Bucket: 'my-s3-bucket' }, { Region: 'us-east-1' })
   .then(res => {
     // res contains the s3 key and bucket that the node_modules tgz was uploaded
     // to.
   });
 ```
+
+## API
+
+* `serverless-builder` - Accepts a list of packages and s3 configuration options
+  and returns a promise that resolves with the location in s3 that the package
+  was saved to.
+ * `packages` - An object of npm packages to install, keyed by package name,
+   with the package version or install path as the value. This object takes the
+   same format as the `dependencies` object in `package.json` files.
+ * s3ObjectOptions - Options to pass to the S3 write stream. This object
+   _must_ contain at least `Bucket` and may contain any other valid S3 putObject
+   options.
+ * s3Options - (optional) Options to pass to the S3 instance. This object may
+   contain any options used when instantiating a S3 object.
+
