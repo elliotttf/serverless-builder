@@ -24,7 +24,7 @@ module.exports = {
   success(test) {
     test.expect(1);
     sb(
-      { once: '^1.0.0' },
+      { 'native-module': '^0.11.3' },
       { Bucket: process.env.SB_S3_BUCKET_NAME }
     )
       .then((res) => {
@@ -39,7 +39,7 @@ module.exports = {
             .pipe(tar.extract(this.path))
             .on('finish', () => {
               fs.readdir(this.path, (fsErr, files) => {
-                test.notEqual(files.indexOf('once'), -1);
+                test.notEqual(files.indexOf('native-module'), -1);
                 test.done();
               });
             })
